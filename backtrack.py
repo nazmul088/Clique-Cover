@@ -2,8 +2,8 @@ import numpy as np
 import math
 import time
 
-from helpers import enter_matrix, is_edge, is_in_clique, is_clique, cliques_from_list, is_solution, load_graph
-from test_instances import test_graph1, test_graph2, test_graph3
+from helpers import cliques_from_list, is_solution
+from test_instances import test_graph1, test_graph2
 
 
 def backtrack(adj_mat, cliques, v=1,  best=(math.inf, None)):
@@ -32,7 +32,6 @@ def backtrack(adj_mat, cliques, v=1,  best=(math.inf, None)):
 
 def main():
     # test_graph = load_graph('instance3.clq')
-    print(test_graph1)
     test_graph = test_graph1
     start_time = time.time()
     cliques = [0 for x in range(test_graph.shape[0])]
