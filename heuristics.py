@@ -10,26 +10,7 @@ from helpers import cliques_from_list, is_solution, neighbors
 from test_instances import test_graph1, test_graph2
 
 
-def light_backtrack(adj_mat, cliques, v=1,  best=(math.inf, None)):
-
-    n = adj_mat.shape[0]
-
-    if v == n:
-        if is_solution(cliques, adj_mat):
-            if len(set(list(cliques))-set({0})) < best[0]:
-                best = (len(set(list(cliques))), cliques_from_list(cliques))
-
-    else:
-        for i in range(1, v+2):
-            cliques[v] = i
-            if is_solution(cliques, adj_mat):
-                if len(set(list(cliques))-set({0})) < best[0]:
-                    best = light_backtrack(adj_mat, cliques, v+1, best)
-
-    return best
-
-
-def greedy(adj_mat, repetitions=5):
+def greedy(adj_mat, repetitions=10):
     n = adj_mat.shape[0]
     # print(adj_mat)
     best = [x for x in range(1, n+1)]
@@ -67,11 +48,6 @@ def greedy(adj_mat, repetitions=5):
             best = cliques
     print(cliques)
     return best
-
-
-def iterated_greedy(adj_mat, repetitions=10):
-    # TODO: GRASP algorithm
-    pass
 
 
 def main():

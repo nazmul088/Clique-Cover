@@ -8,9 +8,7 @@ from test_instances import test_graph1, test_graph2
 
 def backtrack(adj_mat, cliques, v=1,  best=(math.inf, None)):
     n = adj_mat.shape[0]
-    # print(cliques)
-    # print("CALL: v=" + str(v),
-    #       len(set(list(cliques))-set({0})), "cliques=", cliques)
+
     if v == n:
         if is_solution(cliques, adj_mat):
             if len(set(list(cliques))-set({0})) < best[0]:
